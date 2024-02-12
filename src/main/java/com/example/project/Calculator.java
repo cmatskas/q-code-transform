@@ -12,12 +12,12 @@ public class Calculator {
 		return a - b;
 	}
 
-	// Function to add multiply numbers
+	// Function to multiply numbers
 	public Double multiply(Double a, Double b) {
 		return a * b;
 	}
 
-	// Function to add divide numbers
+	// Function to divide numbers
 	public Double divide(Double a, Double b) {
 		return a / b;
 	}
