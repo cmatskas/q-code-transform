@@ -19,10 +19,23 @@ import org.junit.jupiter.api.Test;
 public class CalculatorTests {
 
 	@Test
-	@DisplayName("Test addition")
+	@DisplayName("Test 1+2=3")
 	public void testAdd() {
 		Calculator calculator = new Calculator();
-		assertEquals(5, calculator.add(2, 3));
+		Double a = new Double(1.0);
+		Double b = new Double(2.0);
+		Double result = calculator.add(a, b);
+		assertEquals(3.0, result);
+	}
+
+	@Test
+	@DisplayName("Test 3-2=1")
+	public void testSubstract() {
+		Calculator calculator = new Calculator();
+		Double a = new Double(3.0);
+		Double b = new Double(2.0);
+		Double result = calculator.subtract(a, b);
+		assertEquals(1.0, result);
 	}
 
 }
