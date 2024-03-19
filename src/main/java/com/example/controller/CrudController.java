@@ -6,16 +6,19 @@ import com.example.model.Product;
 import com.example.service.CustomerService;
 import com.example.service.OrderService;
 import com.example.service.ProductService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import sun.misc.BASE64Decoder;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("restriction")
 @RestController
 @RequestMapping("/api")
 public class CrudController {
@@ -62,6 +65,23 @@ public class CrudController {
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
         Product createdProduct = productService.createProduct(product);
         return new ResponseEntity<>(createdProduct, HttpStatus.CREATED);
+    }
+
+    @SuppressWarnings("restriction")
+    @GetMapping("/productImage")
+    public ResponseEntity<byte[]> getProductImage(@RequestBody long productId) {
+        Product product = productService.getProductById(productId);
+        if (product == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            final byte[] image;
+            try {
+                image = new BASE64Decoder().decodeBuffer(product.getImageBase64());
+                return new ResponseEntity<>(image, HttpStatus.CREATED);
+            } catch (IOException e) {
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
     }
 
     @GetMapping("/products")

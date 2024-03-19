@@ -12,12 +12,15 @@ public class Product {
     private String name;
     private double price;
 
+    private String imageBase64;
+
     public Product() {
     }
 
-    public Product(String name, double price) {
+    public Product(String name, double price, String imageBase64) {
         this.name = name;
         this.price = price;
+        this.imageBase64 = imageBase64;
     }
 
     public Long getId() {
@@ -42,5 +45,13 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getImageBase64() {
+        return imageBase64;
+    }
+
+    public void setImageBase64(String imageBase64) {
+        this.imageBase64 = imageBase64;
     }
 }
