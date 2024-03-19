@@ -7,8 +7,8 @@ import com.example.service.CustomerService;
 import com.example.service.OrderService;
 import com.example.service.ProductService;
 import com.example.controller.CrudController;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -18,11 +18,11 @@ import org.springframework.http.ResponseEntity;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-class CrudControllerTest {
+public class CrudControllerTest {
 
     @Mock
     private CustomerService customerService;
@@ -40,8 +40,8 @@ class CrudControllerTest {
     private Product product;
     private Order order;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
         customer = new Customer();
         product = new Product();
@@ -49,7 +49,7 @@ class CrudControllerTest {
     }
 
     @Test
-    void testCreateCustomer() {
+    public void testCreateCustomer() {
         when(customerService.createCustomer(any(Customer.class))).thenReturn(customer);
 
         ResponseEntity<Customer> response = crudController.createCustomer(customer);
@@ -59,7 +59,7 @@ class CrudControllerTest {
     }
 
     @Test
-    void testGetAllCustomers() {
+    public void testGetAllCustomers() {
         List<Customer> customers = Arrays.asList(customer, new Customer());
         when(customerService.getAllCustomers()).thenReturn(customers);
 
@@ -70,7 +70,7 @@ class CrudControllerTest {
     }
 
     @Test
-    void testCreateProduct() {
+    public void testCreateProduct() {
         when(productService.createProduct(any(Product.class))).thenReturn(product);
 
         ResponseEntity<Product> response = crudController.createProduct(product);
@@ -80,7 +80,7 @@ class CrudControllerTest {
     }
 
     @Test
-    void testGetAllProducts() {
+    public void testGetAllProducts() {
         List<Product> products = Arrays.asList(product, new Product());
         when(productService.getAllProducts()).thenReturn(products);
 
@@ -91,7 +91,7 @@ class CrudControllerTest {
     }
 
     @Test
-    void testCreateOrder() {
+    public void testCreateOrder() {
         when(orderService.createOrder(any(Order.class))).thenReturn(order);
 
         ResponseEntity<Order> response = crudController.createOrder(order);
@@ -101,7 +101,7 @@ class CrudControllerTest {
     }
 
     @Test
-    void testGetAllOrders() {
+    public void testGetAllOrders() {
         List<Order> orders = Arrays.asList(order, new Order());
         when(orderService.getAllOrders()).thenReturn(orders);
 
