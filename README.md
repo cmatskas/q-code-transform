@@ -1,28 +1,36 @@
-# java-junit-demo
-* Add a brief paragraph or two that summarizes the purpose and function of this repository.
-* You could add relevant links for the consumers of this repository.
+# java-ecommerce-website
+src
+├── main
+│   ├── java
+│   │   └── com
+│   │       └── example
+│   │           ├── CrudApplication.java
+│   │           ├── controller
+│   │           │   └── CrudController.java
+│   │           ├── dto
+│   │           │   ├── CustomerDTO.java
+│   │           │   ├── OrderDTO.java
+│   │           │   └── ProductDTO.java
+│   │           ├── model
+│   │           │   ├── Customer.java
+│   │           │   ├── Order.java
+│   │           │   └── Product.java
+│   │           ├── repository
+│   │           │   ├── CustomerRepository.java
+│   │           │   ├── OrderRepository.java
+│   │           │   └── ProductRepository.java
+│   │           └── service
+│   │               ├── CustomerService.java
+│   │               ├── OrderService.java
+│   │               └── ProductService.java
+│   └── resources
+│       └── application.properties
+└── pom.xml
 
-## Usage
-* Define the purpose of the repository if this is going to be a tool, utility, library or a service.
-* Provide the instructions on how to consume this repository for the consumers.
 
-## Get Started
-* Provide instructions on how to setup and use this repository for local machine development and testing.
+## Amazon Q - Code Transformation expectations
+* DTO objects should be converted to Records
+* DTO classes have multiline ToString() methods that should be optimize with Java 17
+* CrudController contains an old style switch statement that should be replaced by modern pattern matching code
+* CrudController uses an old `toArray(String[0])` which should be converted to `toArray()` in Java 17
 
-## Prerequisites
-* Provide list of recommended modules and steps on how to install them.
-
-```
-Setup examples:
-...
-```
-
-## Install
-* Provide step-by-step guide on how to get the development environment running.
-* Provide test examples so as to perform a small demo.
-
-## Testing
-* Provide commands and configuration details on how to test the repository.
-
-## Contact
-* Provide contact details on how to contact the owners managing this repository.
